@@ -1,18 +1,24 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:rick_and_morty/modules/characters_list/data/repository/character_repo.dart';
+import 'package:rick_and_morty/modules/characters_list/domain/usecases/get_characters_usecase.dart';
 import 'package:rick_and_morty/modules/characters_list/presentation/cubit/character_states.dart';
 
 class CharacterCubit extends Cubit<CharacterState> {
-  final CharacterRepository repository;
-  CharacterCubit({required this.repository}) : super(CharacterInitial());
+  final GetCharactersUseCase getCharacters;
+  CharacterCubit({required this.getCharacters}) : super(CharacterInitial());
 
-  Future<void> fetchCharacters() async {
+  int currentPage = 1;
+
+  Future<void> fetchCharacters({int page = 1}) async {
     emit(CharacterLoading());
 
-    final result = await repository.getCharacters();
+    final result = await getCharacters(page);
     result.fold(
       (s) => emit(CharacterSuccess(s)),
       (f) => emit(CharacterError(f.toString())),
     );
+  }
+
+  void nextPage() {
+    fetchCharacters(page: currentPage + 1);
   }
 }

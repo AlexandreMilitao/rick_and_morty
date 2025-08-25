@@ -1,7 +1,9 @@
 import 'package:get_it/get_it.dart';
 import 'package:rick_and_morty/core/http_client/custom_http_client.dart';
 import 'package:rick_and_morty/modules/characters_list/data/datasource/character_datasource.dart';
-import 'package:rick_and_morty/modules/characters_list/data/repository/character_repo.dart';
+import 'package:rick_and_morty/modules/characters_list/data/repository/character_repository_impl.dart';
+import 'package:rick_and_morty/modules/characters_list/domain/repositories/character_repository.dart';
+import 'package:rick_and_morty/modules/characters_list/domain/usecases/get_characters_usecase.dart';
 import 'package:rick_and_morty/modules/characters_list/presentation/cubit/character_cubit.dart';
 
 class CharacterInjector {
@@ -13,11 +15,15 @@ class CharacterInjector {
     );
 
     getIt.registerSingleton<CharacterRepository>(
-      CharacterRepository(getIt<CharacterDatasource>()),
+      CharacterRepositoryImpl(getIt<CharacterDatasource>()),
+    );
+
+    getIt.registerSingleton<GetCharactersUseCase>(
+      GetCharactersUseCase(getIt<CharacterRepository>()),
     );
 
     getIt.registerSingleton<CharacterCubit>(
-      CharacterCubit(repository: getIt<CharacterRepository>()),
+      CharacterCubit(getCharacters: getIt<GetCharactersUseCase>()),
     );
   }
 }

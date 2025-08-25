@@ -6,12 +6,11 @@ class CharacterDatasource {
   CustomHttpClient client;
   CharacterDatasource(this.client);
 
-  Future<List<CharacterModel>> getCharacters() async {
-    String? page;
+  Future<List<CharacterModel>> getCharacters(int page) async {
     try {
       final response = await client.get(
         Api.charactersListEndpoint,
-        queryParameters: {"page": page},
+        queryParameters: {"page": page.toString()},
       );
 
       // TODO Melhorar isso.(as List)

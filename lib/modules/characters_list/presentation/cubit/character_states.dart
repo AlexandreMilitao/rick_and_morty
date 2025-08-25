@@ -1,5 +1,5 @@
 import 'package:equatable/equatable.dart';
-import 'package:rick_and_morty/modules/characters_list/domain/models/character_model.dart';
+import 'package:rick_and_morty/modules/characters_list/domain/models/character_entity.dart';
 
 sealed class CharacterState extends Equatable {
   const CharacterState();
@@ -12,7 +12,7 @@ class CharacterInitial extends CharacterState {}
 class CharacterLoading extends CharacterState {}
 
 class CharacterSuccess extends CharacterState {
-  final List<CharacterModel> characters;
+  final List<CharacterEntity> characters;
 
   const CharacterSuccess(this.characters);
 }

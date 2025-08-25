@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:rick_and_morty/core/style/colors.dart';
-import 'package:rick_and_morty/modules/characters_list/domain/models/character_model.dart';
+import 'package:rick_and_morty/modules/characters_list/domain/models/character_entity.dart';
 
 class CardCharacter extends StatelessWidget {
-  final CharacterModel character;
+  final CharacterEntity character;
   const CardCharacter({super.key, required this.character});
 
   @override

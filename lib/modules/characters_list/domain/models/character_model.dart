@@ -1,26 +1,17 @@
-class CharacterModel {
-  final int id;
-  final String name;
-  final String status;
-  final String species;
-  final String type;
-  final String gender;
-  final String origin;
-  final String location;
-  final String image;
-  final List<String> episode;
+import 'package:rick_and_morty/modules/characters_list/domain/models/character_entity.dart';
 
+class CharacterModel extends CharacterEntity {
   CharacterModel({
-    required this.id,
-    required this.name,
-    required this.status,
-    required this.species,
-    required this.type,
-    required this.gender,
-    required this.origin,
-    required this.location,
-    required this.image,
-    required this.episode,
+    required super.id,
+    required super.name,
+    required super.status,
+    required super.species,
+    required super.type,
+    required super.gender,
+    required super.origin,
+    required super.location,
+    required super.image,
+    required super.episode,
   });
 
   factory CharacterModel.fromJson(Map<String, dynamic> json) {
@@ -35,6 +26,21 @@ class CharacterModel {
       location: json['location']['name'],
       image: json['image'],
       episode: List<String>.from(json['episode'].map((e) => e.toString())),
+    );
+  }
+
+  CharacterEntity toEntity() {
+    return CharacterEntity(
+      id: id,
+      name: name,
+      status: status,
+      species: species,
+      type: type,
+      gender: gender,
+      origin: origin,
+      location: location,
+      image: image,
+      episode: episode,
     );
   }
 }
