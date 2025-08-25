@@ -1,6 +1,6 @@
 import 'package:rick_and_morty/core/constants/api.dart';
 import 'package:rick_and_morty/core/http_client/custom_http_client.dart';
-import 'package:rick_and_morty/modules/characters_list/domain/models/character_model.dart';
+import 'package:rick_and_morty/modules/characters_list/data/models/character_model.dart';
 
 class CharacterDatasource {
   CustomHttpClient client;

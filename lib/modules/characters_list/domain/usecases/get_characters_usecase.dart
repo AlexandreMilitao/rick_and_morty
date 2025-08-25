@@ -1,5 +1,5 @@
 import 'package:result_dart/result_dart.dart';
-import 'package:rick_and_morty/modules/characters_list/domain/models/character_entity.dart';
+import 'package:rick_and_morty/modules/characters_list/domain/entity/character_entity.dart';
 import 'package:rick_and_morty/modules/characters_list/domain/repositories/character_repository.dart';
 
 class GetCharactersUseCase {

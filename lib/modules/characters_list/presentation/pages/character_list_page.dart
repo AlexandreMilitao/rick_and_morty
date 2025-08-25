@@ -4,7 +4,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get_it/get_it.dart';
 import 'package:rick_and_morty/core/constants/app_assets.dart';
 import 'package:rick_and_morty/core/style/colors.dart';
-import 'package:rick_and_morty/modules/characters_list/domain/models/character_entity.dart';
+import 'package:rick_and_morty/modules/characters_list/domain/entity/character_entity.dart';
 import 'package:rick_and_morty/modules/characters_list/presentation/cubit/character_cubit.dart';
 import 'package:rick_and_morty/modules/characters_list/presentation/cubit/character_states.dart';
 import 'package:rick_and_morty/modules/characters_list/presentation/widget/card_character.dart';

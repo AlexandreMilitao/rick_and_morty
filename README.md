@@ -1,16 +1,39 @@
 # rick_and_morty
 
-A new Flutter project.
+Resumo do estudo sobre Clean Architecture
 
-## Getting Started
 
-This project is a starting point for a Flutter application.
+Diagrama:
+          ┌───────────────────────┐
+          │     Presentation      │
+          │ (UI / Widgets / Cubit)│
+          └───────────┬───────────┘
+                      │ chama Use Cases
+                      ▼
+          ┌───────────────────────┐
+          │     Application       │
+          │ (Use Cases / Services)│
+          └───────────┬───────────┘
+                      │ usa Entidades / Interfaces
+                      ▼
+          ┌───────────────────────┐
+          │       Domain          │
+          │ (Entities / Interfaces)│
+          └───────────▲───────────┘
+                      │ implementado por
+                      │
+          ┌───────────┴───────────┐
+          │    Infrastructure     │
+          │ (Data Sources / Repos)│
+          └───────────────────────┘
 
-A few resources to get you started if this is your first Flutter project:
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+Separação por camadas:
+    Cada camada tem uma responsabilida e depende apenas da camada acima(abstração).
+    As camadas de baixo são camadas de implementações
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+        Domain -> Regras de negocio(Contem entidades, casos de uso, contrato/repositories)
+        Data -> Implementa o contrato do repositorio, tem fontes de dados(API...) e modelos
+        Presentation -> Contem a parte visual do app(widgets) e o controle dos estados da tela
+        Core -> Utilitários e servições que podem ser acessados de qualquer lugar do app.
+        

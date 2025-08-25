@@ -1,5 +1,5 @@
 import 'package:equatable/equatable.dart';
-import 'package:rick_and_morty/modules/characters_list/domain/models/character_entity.dart';
+import 'package:rick_and_morty/modules/characters_list/domain/entity/character_entity.dart';
 
 sealed class CharacterState extends Equatable {
   const CharacterState();
