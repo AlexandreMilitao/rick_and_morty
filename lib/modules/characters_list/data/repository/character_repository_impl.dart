@@ -9,11 +9,11 @@ class CharacterRepositoryImpl implements CharacterRepository {
   CharacterRepositoryImpl(this.datasource);
 
   @override
-  Future<Result<List<CharacterEntity>>> getCharacters(int page) async {
+  Future<Result<CharacterApiResultEntity>> getCharacters(int page) async {
     try {
       final result = await datasource.getCharacters(page);
-      final entities = result.map((m) => m.toEntity()).toList();
-      return Success(entities);
+
+      return Success(result);
     } catch (e) {
       return Failure(Exception("Failed to fetch characters: $e"));
     }

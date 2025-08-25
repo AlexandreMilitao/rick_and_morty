@@ -8,6 +8,7 @@ import 'package:rick_and_morty/modules/characters_list/domain/entity/character_e
 import 'package:rick_and_morty/modules/characters_list/presentation/cubit/character_cubit.dart';
 import 'package:rick_and_morty/modules/characters_list/presentation/cubit/character_states.dart';
 import 'package:rick_and_morty/modules/characters_list/presentation/widget/card_character.dart';
+import 'package:rick_and_morty/modules/characters_list/presentation/widget/page_selector.dart';
 import 'package:rick_and_morty/modules/characters_list/presentation/widgets/my_bottom_bar.dart';
 
 class CharacterListPage extends StatelessWidget {
@@ -44,6 +45,7 @@ class _CharacterListViewState extends State<CharacterListView> {
         backgroundColor: Colors.black,
         title: SvgPicture.asset(AppAssets.logo, height: 50),
       ),
+      // floatingActionButton: PageSelector(totalPages: MyObject.info.totalPages, currentPage: 1),
       body: BlocBuilder<CharacterCubit, CharacterState>(
         builder: (context, state) {
           if (state is CharacterLoading) {
@@ -53,7 +55,7 @@ class _CharacterListViewState extends State<CharacterListView> {
           } else if (state is CharacterError) {
             return Center(child: Text('Error: ${state.message}'));
           } else if (state is CharacterSuccess) {
-            return CharacterListWidget(characters: state.characters);
+            return CharacterListWidget(characters: state.characters.results);
           }
           return const Center(child: Text("Welcome to Rick and Morty App"));
         },

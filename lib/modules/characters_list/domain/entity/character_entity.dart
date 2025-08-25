@@ -5,8 +5,8 @@ class CharacterEntity {
   final String species;
   final String type;
   final String gender;
-  final String origin;
-  final String location;
+  final LocationEntity origin;
+  final LocationEntity location;
   final String image;
   final List<String> episode;
 
@@ -21,5 +21,37 @@ class CharacterEntity {
     required this.location,
     required this.image,
     required this.episode,
+  });
+}
+
+class LocationEntity {
+  final String name;
+  final String url;
+
+  LocationEntity({
+    required this.name,
+    required this.url,
+  });
+}
+
+class InfoEntity {
+  final int itemCount;
+  final int pages;
+  final String? next;
+  final String? prev;
+  InfoEntity({
+    required this.itemCount,
+    required this.pages,
+    this.next,
+    this.prev,
+  });
+}
+
+class CharacterApiResultEntity {
+  final InfoEntity infoEntity;
+  final List<CharacterEntity> results;
+  CharacterApiResultEntity({
+    required this.infoEntity,
+    required this.results,
   });
 }

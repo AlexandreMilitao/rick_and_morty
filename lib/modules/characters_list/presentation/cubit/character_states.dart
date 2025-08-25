@@ -12,7 +12,7 @@ class CharacterInitial extends CharacterState {}
 class CharacterLoading extends CharacterState {}
 
 class CharacterSuccess extends CharacterState {
-  final List<CharacterEntity> characters;
+  final CharacterApiResultEntity characters;
 
   const CharacterSuccess(this.characters);
 }
