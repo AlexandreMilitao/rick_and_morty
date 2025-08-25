@@ -1,0 +1,4 @@
+class Api {
+  static const String baseUrl = "https://rickandmortyapi.com/api/";
+  static const String charactersListEndpoint = "${baseUrl}character";
+}

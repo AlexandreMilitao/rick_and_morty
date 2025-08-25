@@ -1,19 +1,17 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
-import 'package:rick_and_morty/init_page.dart';
+import 'package:rick_and_morty/core/app_initializer.dart';
+import 'package:rick_and_morty/core/app_routes.dart';
 
-void main() {
-  runApp(const MyApp());
-}
+FutureOr<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(primarySwatch: Colors.blue),
-      home: const InitPage(),
-    );
-  }
+  await AppInitializer.initializeDependencies();
+  runApp(
+    MaterialApp.router(
+      routerConfig: AppRoutes.router,
+      debugShowCheckedModeBanner: false,
+    ),
+  );
 }
