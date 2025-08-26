@@ -9,7 +9,6 @@ import 'package:rick_and_morty/modules/characters_list/presentation/cubit/charac
 import 'package:rick_and_morty/modules/characters_list/presentation/cubit/character_states.dart';
 import 'package:rick_and_morty/modules/characters_list/presentation/widget/card_character.dart';
 import 'package:rick_and_morty/modules/characters_list/presentation/widget/page_selector.dart';
-import 'package:rick_and_morty/modules/characters_list/presentation/widgets/my_bottom_bar.dart';
 
 class CharacterListPage extends StatelessWidget {
   const CharacterListPage({super.key});
@@ -45,7 +44,17 @@ class _CharacterListViewState extends State<CharacterListView> {
         backgroundColor: Colors.black,
         title: SvgPicture.asset(AppAssets.logo, height: 50),
       ),
-      // floatingActionButton: PageSelector(totalPages: MyObject.info.totalPages, currentPage: 1),
+      floatingActionButton: BlocBuilder<CharacterCubit, CharacterState>(
+        builder: (context, state) {
+          if (state is CharacterSuccess) {
+            return PageSelector(
+              totalPages: state.apiResult.infoEntity.pages,
+            );
+          } else {
+            return SizedBox.shrink();
+          }
+        },
+      ),
       body: BlocBuilder<CharacterCubit, CharacterState>(
         builder: (context, state) {
           if (state is CharacterLoading) {
@@ -55,12 +64,11 @@ class _CharacterListViewState extends State<CharacterListView> {
           } else if (state is CharacterError) {
             return Center(child: Text('Error: ${state.message}'));
           } else if (state is CharacterSuccess) {
-            return CharacterListWidget(characters: state.characters.results);
+            return CharacterListWidget(characters: state.apiResult.results);
           }
-          return const Center(child: Text("Welcome to Rick and Morty App"));
+          return const Center(child: Text("Oh Oh, Something went wrong"));
         },
       ),
-      bottomNavigationBar: MyBottomBar(),
     );
   }
 }
