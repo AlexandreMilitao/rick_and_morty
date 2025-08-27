@@ -4,6 +4,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get_it/get_it.dart';
 import 'package:rick_and_morty/core/constants/app_assets.dart';
 import 'package:rick_and_morty/core/style/colors.dart';
+import 'package:rick_and_morty/core/ui/widgets/my_app_bar.dart';
 import 'package:rick_and_morty/modules/characters_list/domain/entity/character_entity.dart';
 import 'package:rick_and_morty/modules/characters_list/presentation/cubit/character_cubit.dart';
 import 'package:rick_and_morty/modules/characters_list/presentation/cubit/character_states.dart';
@@ -30,8 +31,11 @@ class CharacterListView extends StatefulWidget {
 }
 
 class _CharacterListViewState extends State<CharacterListView> {
+  late int currentPage;
+
   @override
   void initState() {
+    currentPage = 1;
     super.initState();
     context.read<CharacterCubit>().fetchCharacters();
   }
@@ -40,20 +44,29 @@ class _CharacterListViewState extends State<CharacterListView> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: MyColors.color2,
-      appBar: AppBar(
-        backgroundColor: Colors.black,
-        title: SvgPicture.asset(AppAssets.logo, height: 50),
-      ),
-      floatingActionButton: BlocBuilder<CharacterCubit, CharacterState>(
-        builder: (context, state) {
-          if (state is CharacterSuccess) {
-            return PageSelector(
-              totalPages: state.apiResult.infoEntity.pages,
-            );
-          } else {
-            return SizedBox.shrink();
-          }
-        },
+      appBar: MyAppBar(
+        title: SvgPicture.asset(
+          AppAssets.logo,
+          height: 50,
+        ),
+        actions: [
+          BlocBuilder<CharacterCubit, CharacterState>(
+            builder: (context, state) {
+              if (state is CharacterSuccess) {
+                return PageSelector(
+                  totalPages: state.apiResult.infoEntity.pages,
+                  currentPage: currentPage,
+                  onPageSelected: (page) {
+                    currentPage = page;
+                    context.read<CharacterCubit>().fetchCharacters(page: page);
+                  },
+                );
+              } else {
+                return SizedBox.shrink();
+              }
+            },
+          ),
+        ],
       ),
       body: BlocBuilder<CharacterCubit, CharacterState>(
         builder: (context, state) {

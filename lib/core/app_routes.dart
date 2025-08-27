@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:rick_and_morty/core/widgets/initial_page.dart';
+import 'package:rick_and_morty/core/ui/pages/initial_page.dart';
 import 'package:rick_and_morty/modules/characters_list/presentation/pages/character_list_page.dart';
 
 class AppRoutes {
