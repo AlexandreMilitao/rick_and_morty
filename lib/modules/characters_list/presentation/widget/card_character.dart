@@ -23,7 +23,7 @@ class CardCharacter extends StatelessWidget {
         ),
         subtitle: Text(
           character.species,
-          style: const TextStyle(color: Colors.white70),
+          style: const TextStyle(color: Colors.white60),
         ),
       ),
     );
