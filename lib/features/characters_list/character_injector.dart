@@ -1,3 +1,6 @@
+// Configuracão das dependencias do módulo(Character)
+// Registra datasources, repositorios usecas e cubits no container da injeção de dependencia(GetIt)
+
 import 'package:get_it/get_it.dart';
 import 'package:rick_and_morty/core/http_client/custom_http_client.dart';
 import 'package:rick_and_morty/features/characters_list/data/datasource/character_datasource.dart';

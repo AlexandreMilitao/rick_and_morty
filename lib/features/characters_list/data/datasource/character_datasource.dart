@@ -1,3 +1,4 @@
+// Cama responsavel por buscar os dados (API, banco local, etc)
 import 'package:rick_and_morty/core/constants/api.dart';
 import 'package:rick_and_morty/core/http_client/custom_http_client.dart';
 import 'package:rick_and_morty/features/characters_list/data/models/character_model.dart';

@@ -1,3 +1,6 @@
+// Representa meu modelo "puro"
+// Não tem dependência com nenhuma outra camada
+// Deve conter apenas atributos essenciais para a regra de negocio
 class CharacterEntity {
   final int id;
   final String name;

@@ -1,3 +1,6 @@
+// Contrato (abstração) para acesso aos dados
+// Abstraçãpo - Interface que defini oque uma class deve fazer, mas não como deve fazer(sem a implementação)
+
 import 'package:result_dart/result_dart.dart';
 import 'package:rick_and_morty/features/characters_list/domain/entity/character_entity.dart';
 

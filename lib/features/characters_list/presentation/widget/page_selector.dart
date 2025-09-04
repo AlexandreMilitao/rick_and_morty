@@ -28,21 +28,21 @@ class PageSelector extends StatelessWidget {
         alignment: Alignment.center,
         underline: SizedBox.shrink(),
         padding: EdgeInsets.symmetric(horizontal: 10.0),
-        dropdownColor: MyColors.color5,
+        dropdownColor: MyColors.dropDownColor,
         menuMaxHeight: 200,
         borderRadius: BorderRadius.all(Radius.circular(10.0)),
         menuWidth: 120,
         hint: Text(
           "Page $currentPage",
           style: TextStyle(
-            color: MyColors.color5,
+            color: MyColors.textColor,
             fontWeight: FontWeight.bold,
             fontSize: 15,
           ),
         ),
         icon: Icon(
           Icons.arrow_drop_down,
-          color: MyColors.color5,
+          color: MyColors.iconColor,
         ),
         items: List.generate(
           totalPages,

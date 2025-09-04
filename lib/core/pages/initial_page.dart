@@ -28,7 +28,7 @@ class _InitialPageState extends State<InitialPage>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: MyColors.color1,
+      backgroundColor: MyColors.initialPageBackgroundColor,
       body: Center(
         child: Stack(
           children: [PortalAnimationWidgetState(), LogoAnimationWidget()],

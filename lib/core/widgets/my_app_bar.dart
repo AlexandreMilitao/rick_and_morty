@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:rick_and_morty/core/style/my_colors.dart';
 
 class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
   final Widget title;
   final List<Widget>? actions;
   final Widget? leading;
+  final bool? centerTile;
 
   const MyAppBar({
     super.key,
     required this.title,
     this.actions,
     this.leading,
+    this.centerTile,
   });
 
   @override
@@ -19,11 +20,10 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      backgroundColor: MyColors.appBarBackgroundColor,
       title: title,
       actions: actions,
       leading: leading,
-      centerTitle: false,
+      centerTitle: centerTile,
       automaticallyImplyLeading: false,
     );
   }

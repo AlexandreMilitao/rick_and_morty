@@ -1,3 +1,5 @@
+// Define os estados que a UI pode ter
+
 import 'package:equatable/equatable.dart';
 import 'package:rick_and_morty/features/characters_list/domain/entity/character_entity.dart';
 

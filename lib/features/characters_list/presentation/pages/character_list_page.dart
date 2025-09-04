@@ -51,6 +51,7 @@ class _CharacterListViewState extends State<CharacterListView> {
           AppAssets.logo,
           height: 50,
         ),
+        centerTile: false,
         actions: [
           BlocBuilder<CharacterCubit, CharacterState>(
             builder: (context, state) {
@@ -74,7 +75,9 @@ class _CharacterListViewState extends State<CharacterListView> {
         builder: (context, state) {
           if (state is CharacterLoading) {
             return Center(
-              child: CircularProgressIndicator(color: MyColors.color5),
+              child: CircularProgressIndicator(
+                color: MyColors.progressIndicatorColor,
+              ),
             );
           } else if (state is CharacterError) {
             return Center(child: Text('Error: ${state.message}'));

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:rick_and_morty/core/style/my_colors.dart';
 import 'package:rick_and_morty/core/widgets/my_app_bar.dart';
 
 class MyScaffold extends StatelessWidget {
@@ -13,7 +12,6 @@ class MyScaffold extends StatelessWidget {
     return Scaffold(
       appBar: appBar,
       body: body,
-      backgroundColor: backgroundColor ?? MyColors.backgroundColor,
     );
   }
 }

@@ -1,3 +1,5 @@
+// Implemantação concreta do Repository da camada de domínio
+// Usa o datasource para buscar os dados e converte Model para Entity
 import 'package:result_dart/result_dart.dart';
 import 'package:rick_and_morty/features/characters_list/domain/entity/character_entity.dart';
 import 'package:rick_and_morty/features/characters_list/data/datasource/character_datasource.dart';

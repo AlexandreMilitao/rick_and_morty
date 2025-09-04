@@ -1,3 +1,6 @@
+// Representa o modelo de dados que vem do Datasource
+// Contem métodos de serialização e desserialização (toJson, fromJson)
+// É um aponte entre o datasource e a entidade (domain)
 import 'package:rick_and_morty/features/characters_list/domain/entity/character_entity.dart';
 
 class CharacterModel extends CharacterEntity {
